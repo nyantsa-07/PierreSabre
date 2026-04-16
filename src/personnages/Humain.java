@@ -1,9 +1,9 @@
 package personnages;
 
 public class Humain {
-	private String nom;
-	private String boissonPreferee;
-	private int argent;
+	protected String nom;
+	protected String boissonPreferee;
+	protected int argent;
 
 	public Humain(String nom, String boissonPreferee, int argent) {
 		super();
@@ -12,7 +12,7 @@ public class Humain {
 		this.argent = argent;
 	}
 
-	public void parler(String texte) {
+	protected void parler(String texte) {
 		System.out.println(prendreParole() + texte);
 	}
 
