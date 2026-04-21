@@ -15,23 +15,23 @@ public class Yakuza extends Humain {
 
 	public void extorquer(Commercant commercant) {
 		parler("Tiens, tiens, ne serait-ce pas un faible marchand qui passe par là ?");
-		parler(commercant.nom + ", si tu tiens à la vie donne moi ta bourse !");
+		parler(commercant.getNom() + ", si tu tiens à la vie donne moi ta bourse !");
 		int argentGagne = commercant.seFaireExtorquer();
-		argent += argentGagne;
+		gagnerArgent(argentGagne); 
 		reputation++;
-		parler("J'ai piqué les " + argentGagne + " sous de " + commercant.nom + ", ce qui me fait " + argent
+		parler("J'ai piqué les " + argentGagne + " sous de " + commercant.getNom()+ ", ce qui me fait " + getArgent()
 				+ " sous dans ma poche. Hi! Hi!");
 	}
 
 	public void gagner(int gain) {
 		gagnerArgent(gain);
 		reputation ++ ;
-		parler("Ce ronin pensait vraiment battre "+ nom + " du clan de "
+		parler("Ce ronin pensait vraiment battre "+ getNom() + " du clan de "
 				+ clan + "? Je l'ai dépouillé de ses "+ gain +" sous.");
 	}
 	
 	public int perdre() {
-		int perte = argent;
+		int perte =getArgent();
 		perdreArgent(perte);
 		reputation -= 1 ;
 		parler("J’ai perdu mon duel et mes " + perte + " sous, snif... J'ai déshonoré le clan de "

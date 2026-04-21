@@ -1,15 +1,26 @@
 package personnages;
 
 public class Humain {
-	protected String nom;
-	protected String boissonPreferee;
-	protected int argent;
+	private String nom;
+	private String boissonPreferee;
+	private int argent;
+	protected int nbConnaissance = 0;
+	private Humain[] connaissance = new Humain[3];
 
 	public Humain(String nom, String boissonPreferee, int argent) {
 		super();
 		this.nom = nom;
 		this.boissonPreferee = boissonPreferee;
 		this.argent = argent;
+	}
+	
+
+	public int getArgent() {
+		return argent;
+	}
+
+	public String getNom() {
+		return nom;
 	}
 
 	protected void parler(String texte) {
@@ -46,5 +57,40 @@ public class Humain {
 					+ " m'offrir " + bien + " à " + prix + " sous");
 			perdreArgent(prix);
 		}
+	}
+	
+	private void repondre(Humain humain) {
+		direBonjour();
+	}
+	
+	private void memoriser(Humain humain) {
+		if (nbConnaissance<connaissance.length) {
+			connaissance[nbConnaissance] = humain;
+			nbConnaissance ++;
+		}
+		else {
+			for (int i = 0; i < nbConnaissance-1; i++) {
+				connaissance[i] = connaissance[i+1];
+			}
+			connaissance[nbConnaissance-1] = humain;
+		}
+	}
+	
+	public void faireConnaissance(Humain autreHumain) {
+		direBonjour();
+		autreHumain.repondre(this);
+		autreHumain.memoriser(this);
+		memoriser(autreHumain);
+		
+	}
+	
+	public void listerConnaissance() {
+		String texte = "Je connais beaucoup de monde dont :";
+		for (int i = 0; i < nbConnaissance; i++) {
+			texte += connaissance[i].getNom();
+			if (i<nbConnaissance-1) texte += ", " ;
+
+		}
+		parler(texte);
 	}
 }
