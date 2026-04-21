@@ -85,7 +85,7 @@ public class Humain {
 	}
 	
 	public void listerConnaissance() {
-		String texte = "Je connais beaucoup de monde dont :";
+		String texte = "Je connais beaucoup de monde dont: ";
 		for (int i = 0; i < nbConnaissance; i++) {
 			texte += connaissance[i].getNom();
 			if (i<nbConnaissance-1) texte += ", " ;
