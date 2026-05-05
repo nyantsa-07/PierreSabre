@@ -5,7 +5,7 @@ public class Humain {
 	private String boissonPreferee;
 	private int argent;
 	protected int nbConnaissance = 0;
-	private Humain[] connaissance = new Humain[3];
+	protected Humain[] connaissance = new Humain[3];
 
 	public Humain(String nom, String boissonPreferee, int argent) {
 		super();
